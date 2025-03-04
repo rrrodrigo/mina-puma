@@ -19,7 +19,7 @@ namespace :puma do
 
   desc 'Start puma'
   task start: :remote_environment do
-    puma_port_option = "-p #{fetch(:puma_port)}" if set?(:puma_port)
+    puma_port_option = set?(:puma_port) ? "-p #{fetch(:puma_port)}" : ""
 
     comment "Starting Puma..."
     command %[
